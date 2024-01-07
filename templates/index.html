@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>App</title>
+</head>
+<body>
+
+    <div class="split left">
+        <div class="centered">
+            <img src="../static/products/prog2.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="split right">
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="d-flex flex-column col-md-8 bg-light p-4 rounded">
+                    <div class="mb-3">
+                        <label for="" class="font-weight-bold">Positive Sentiments: {{ data.possitive }}</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="font-weight-bold">Negative Sentiments: {{ data.negative }}</label>
+                    </div>
+                    <div class="mb-3">
+                        <form method="post">
+                          <textarea name="text" class="form-control" placeholder="Enter your text"></textarea>
+                          <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                        </form>
+                    </div>
+
+                    <div class="comment-bottom bg-white p-3 rounded">
+                        {% for review in data.reviews %}
+                        <hr class="my-2">
+                          <div class="commented-section mt-2">
+                              <div class="text-nowrap bd-highlight"><span>{{ review }}</span></div>
+                          </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
